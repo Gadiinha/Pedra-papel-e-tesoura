@@ -1,0 +1,86 @@
+#Alunos: Emily Soares, Hilary Brandão, Rafael de Matos.             Data:15/04/2023
+#Prática 1 - Jogo Pedra, Papel e Tesoura :)
+
+import random
+
+def jogo():
+
+    i = 0
+    j = 0
+    empate = 0
+    derrota = 0
+    vitoria = 0
+
+    print("           ----------Boas vindas----------")
+    print("          Regras do Jogo de Pedra, Papel e Tesoura: ")
+    print("\n→ Neste jogo, o jogador escolhe entre as três opções: pedra, papel ou tesoura;")
+    print("\n→ Em seguida, o computador escolhe uma opção aleatoriamente;")
+    print("\n→ A escolha do jogador é comparada com a escolha do computador para determinar o vencedor; ")
+    print("\n A pedra vence a tesoura;\n A tesoura vence o papel;\n O papel vence a pedra;")
+    print("\n→ O placar será exibido ao final da partida.\n")
+
+    while(i != 2):
+
+      print(f"Rodada {j}")
+
+      opcoes = ['pedra', 'papel', 'tesoura']
+
+      escolha_usuario = int(input("Escolha (1) pedra, (2) papel ou (3) tesoura: "))
+
+      while(escolha_usuario != 1 and escolha_usuario != 2 and escolha_usuario != 3):
+       escolha_usuario = int(input("Valor inválido, digite novamente...\nEscolha (1) pedra, (2) papel ou (3) tesoura: "))
+      escolha_computador = random.choice(opcoes)
+
+      if escolha_usuario == 1:
+
+        print("Você escolheu pedra")
+        print("          _\n      ---  __)\n            (___)\n            (___)\n            (___)\n     ---.__(___)\n")
+
+      elif escolha_usuario == 2:
+
+        print("Você escolheu papel")
+        print("         ________\n      ---'_______)___\n               ______)\n                _______)\n              _______)\n      ---.__________)\n")
+
+      else:
+
+        print("Você escolheu tesoura")
+        print("          _______\n      ---'   ____)____\n                ______)\n             __________)\n            (____)\n      ---.__(___)\n")
+
+      print(f"O computador escolheu {escolha_computador}")
+
+      if escolha_computador == 'pedra':
+        print("          _\n      ---  __)\n            (___)\n            (___)\n            (___)\n     ---.__(___)\n")
+      elif escolha_computador == 'papel':
+        print("         ________\n      ---'_______)___\n               ______)\n                _______)\n              _______)\n      ---.__________)\n")
+      else:
+       print("          _______\n      ---'   ____)____\n                ______)\n             __________)\n            (____)\n      ---.__(___)\n")
+
+      if escolha_usuario == 1 and escolha_computador == "pedra":
+          print("Empate!!")
+          empate+=1
+      elif escolha_usuario == 2 and escolha_computador == "papel":
+          print("Empate!!")
+          empate+=1
+      elif escolha_usuario == 3 and escolha_computador == "tesoura":
+          print("Empate!!")
+          empate+=1
+      elif escolha_usuario == 1 and escolha_computador == 'tesoura':
+          print("Jogador venceu a rodada!!")
+          vitoria+=1
+      elif escolha_usuario == 2 and escolha_computador == 'pedra':
+          print("Jogador venceu a rodada!!")
+          vitoria+=1
+      elif escolha_usuario == 3 and escolha_computador == 'papel':
+         print("Jogador venceu a rodada!!")
+         vitoria+=1
+      else:
+          print("Você perdeu!")
+          derrota+=1
+      j+=1
+
+      print("\n\nDeseja jogar novamente ?")
+      i = int(input("(1) para continuar - (2) para sair "))
+
+    print(f"\n\nPlacar: \nVitorias: {vitoria} \nDerrota: {derrota} \nEmpate: {empate}")
+    print(f"Placar final: Jogador {vitoria} x {derrota} Computador")
+jogo()
